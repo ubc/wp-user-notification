@@ -46,7 +46,6 @@ The WP User Notification plugin provides a flexible API for creating custom noti
 = Basic Notification =
 
 ```php
-<?php
 use WP\User_Notification\WP_User_Notification;
 use WP\User_Notification\WP_User_Notification_Registry;
 
@@ -70,7 +69,6 @@ $registry->register( $notification );
 = Required Acknowledgment =
 
 ```php
-<?php
 // Make the notification require acknowledgment
 $notification->set_is_required( true );
 $notification->set_required_message( 'I have read and understood this message' );
@@ -82,7 +80,6 @@ $notification->set_postpone_period( WEEK_IN_SECONDS );
 = User Permission Control =
 
 ```php
-<?php
 // Show only to users with specific capabilities
 $notification->set_user_permissions_criteria( array( 'manage_options', 'edit_posts' ) );
 ```
@@ -90,7 +87,6 @@ $notification->set_user_permissions_criteria( array( 'manage_options', 'edit_pos
 = Custom Display Criteria =
 
 ```php
-<?php
 // Add custom logic for when to show the notification
 $notification->set_additional_criteria( function( $notification ) {
     // Show only to users who haven't completed their profile
@@ -104,7 +100,6 @@ $notification->set_additional_criteria( function( $notification ) {
 The plugin supports various form fields for collecting user input:
 
 ```php
-<?php
 // Create form questions
 $questions = array(
     array(
@@ -145,7 +140,6 @@ $notification->set_questions( $questions );
 = Version Control =
 
 ```php
-<?php
 // Set version to track notification updates
 $notification->set_version( '1.1.0' );
 ```
