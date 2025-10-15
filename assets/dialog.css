@@ -1,0 +1,131 @@
+#wp-user-notification-dialog {
+  .hidden {
+    display: none;
+  }
+
+  [role="dialog"] {
+    box-sizing: border-box;
+    padding: 2rem 3rem;
+    border: 1px solid #000;
+    background-color: #fff;
+    min-height: 100vh;
+  }
+
+  @media screen and (min-width: 640px) {
+    [role="dialog"] {
+      position: absolute;
+      top: 50%;
+      left: 50vw;
+      /* move to the middle of the screen (assumes relative parent is the body/viewport) */
+      transform: translate(-50%,
+          -50%);
+      /* move backwards 50% of this element's width */
+
+      min-width: calc(640px - (15px * 2));
+      /* == breakpoint - left+right margin */
+      min-height: auto;
+      max-height: 80vh;
+      box-shadow:
+        0 19px 38px rgb(0 0 0 / 12%),
+        0 15px 12px rgb(0 0 0 / 22%);
+
+      overflow-y: scroll;
+    }
+  }
+
+  .dialog_label {
+    line-height: 1.2;
+    font-weight: bold;
+  }
+
+  .dialog_form {
+    margin: 30px 0;
+  }
+
+  .dialog_form.inline :is(.label_text, legend) {
+    box-sizing: border-box;
+    padding-right: 0.5em;
+    display: inline-block;
+    font-weight: 500;
+    width: 30%;
+    text-align: right;
+  }
+
+  .dialog_form:not(.inline) :is(.label_text, legend) {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+
+  .dialog_form_item {
+    margin: 10px 0;
+  }
+
+  .dialog_form_actions {
+    text-align: right;
+    padding: 0 20px 20px;
+  }
+
+  .dialog_close_button {
+    float: right;
+    position: absolute;
+    top: 10px;
+    left: 92%;
+    height: 25px;
+  }
+
+  .dialog_close_button img {
+    border: 0;
+  }
+
+  .dialog_desc {
+    padding: 10px 20px;
+  }
+
+  /* native <dialog> element uses the ::backdrop pseudo-element */
+
+  /* dialog::backdrop, */
+  .dialog-backdrop {
+    display: none;
+    position: fixed;
+    overflow-y: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 99999;
+  }
+
+  @media screen and (min-width: 640px) {
+    .dialog-backdrop {
+      background: rgb(0 0 0 / 80%);
+    }
+  }
+
+  .dialog-backdrop.active {
+    display: block;
+  }
+
+  .no-scroll {
+    overflow-y: auto !important;
+  }
+
+  /* this is added to the body when a dialog is open */
+  .has-dialog {
+    overflow: hidden;
+  }
+
+  .dialog_form_item {
+
+    input[type="text"],
+    select {
+      width: 100%;
+      max-width: 200px;
+    }
+
+    textarea {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+}
