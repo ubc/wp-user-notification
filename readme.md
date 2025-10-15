@@ -1,20 +1,21 @@
-=== WP User Notification ===
-Contributors: LTIC WordPress
-Tags: notifications, user notifications, admin notifications, multisite
-Requires at least: 6.5
-Tested up to: 6.5
-Requires PHP: 7.4
-Stable tag: 1.0.0
-License: GPL-2.0-or-later
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
+# WP User Notification
 
 A powerful notification system that allows network administrators to create and manage user notifications with custom forms and criteria.
 
-== Description ==
+- Contributors: LTIC WordPress
+- Tags: notifications, user notifications, admin notifications, multisite
+- Requires at least: 6.5
+- Tested up to: 6.5
+- Requires PHP: 7.4
+- Stable tag: 1.0.0
+- License: GPL-2.0-or-later
+- License URI: https://www.gnu.org/licenses/gpl-2.0.html
+
+## Description
 
 WP User Notification is a flexible notification system that enables network administrators to create and manage notifications for WordPress users. The plugin provides a robust framework for displaying important messages, announcements, and collecting user responses through customizable forms.
 
-= Key Features =
+### Key Features
 
 * Create custom notifications with rich content
 * Set notification priority levels
@@ -25,7 +26,7 @@ WP User Notification is a flexible notification system that enables network admi
 * Add custom criteria for notification display
 * Version control for notifications
 
-= Use Cases =
+### Use Cases
 
 * Important announcements for site administrators
 * Terms of service acknowledgments
@@ -33,17 +34,17 @@ WP User Notification is a flexible notification system that enables network admi
 * Policy updates and confirmations
 * Custom questionnaires
 
-== Installation ==
+## Installation
 
 1. Upload the `wp-user-notification` folder to the `/wp-content/plugins/` directory
 2. Find and activate `WP User Notification` plugin
 3. Configure notifications inside a separate plugin
 
-= Usage =
+## Usage
 
 The WP User Notification plugin provides a flexible API for creating custom notifications. Here's how to create and customize notifications:
 
-= Basic Notification =
+### Basic Notification
 
 ```php
 use WP\User_Notification\WP_User_Notification;
@@ -66,7 +67,7 @@ $notification->set_output( '<p>Welcome to our platform!</p>' );
 $registry->register( $notification );
 ```
 
-= Required Acknowledgment =
+### Required Acknowledgment
 
 ```php
 // Make the notification require acknowledgment
@@ -77,14 +78,14 @@ $notification->set_required_message( 'I have read and understood this message' )
 $notification->set_postpone_period( WEEK_IN_SECONDS );
 ```
 
-= User Permission Control =
+### User Permission Control
 
 ```php
 // Show only to users with specific capabilities
 $notification->set_user_permissions_criteria( array( 'manage_options', 'edit_posts' ) );
 ```
 
-= Custom Display Criteria =
+### Custom Display Criteria
 
 ```php
 // Add custom logic for when to show the notification
@@ -95,7 +96,7 @@ $notification->set_additional_criteria( function( $notification ) {
 } );
 ```
 
-= Adding Form Fields =
+### Adding Form Fields
 
 The plugin supports various form fields for collecting user input:
 
@@ -137,41 +138,41 @@ $questions = array(
 $notification->set_questions( $questions );
 ```
 
-= Version Control =
+### Version Control
 
 ```php
 // Set version to track notification updates
 $notification->set_version( '1.1.0' );
 ```
 
-== Frequently Asked Questions ==
+## Frequently Asked Questions
 
-= Can I create notifications for specific user roles? =
+### Can I create notifications for specific user roles?
 
 Yes, you can set user permission criteria for each notification to target specific user roles or capabilities.
 
-= Can users dismiss notifications permanently? =
+### Can users dismiss notifications permanently?
 
 Yes, notifications can be configured to be dismissed permanently or temporarily with a custom postpone period.
 
-= Can I add custom forms to notifications? =
+### Can I add custom forms to notifications?
 
 Yes, the plugin supports various form input types including text input, radio buttons, checkboxes, select dropdowns, and textareas.
 
-= Can I add custom criteria for when notifications should appear? =
+### Can I add custom criteria for when notifications should appear?
 
 Yes, you can add custom callback functions to determine when notifications should be displayed based on any criteria you define.
 
-== Changelog ==
+## Changelog
 
-= 1.0.0 =
+### 1.0.0
 * Initial release
 
-== Development ==
+## Development
 
 * [GitHub Repository](git@github.com:ubc/wp-user-notification.git)
 * [Issue Tracker](https://github.com/ubc/wp-user-notification/issues)
 
-== Credits ==
+## Credits
 
 * Developed by LTIC WordPress
