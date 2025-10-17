@@ -130,6 +130,8 @@ class Checkbox_Control extends Question_Control {
 			return '<p class="error">No options available for checkbox field.</p>';
 		}
 
+		$required_mark = $this->required ? ' <span class="required">*</span>' : '';
+
 		// Generate unique fieldset ID for ARIA reference.
 		$fieldset_id = $this->name . '_fieldset';
 
