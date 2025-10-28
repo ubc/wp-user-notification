@@ -62,9 +62,9 @@ class WP_User_Notification_DB {
 		$sql = "CREATE TABLE $table_name (
 				id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
 				user_id bigint(20) unsigned NOT NULL,
-				slug varchar(255) NOT NULL,
-				status varchar(255) NOT NULL,
-				version varchar(255) NOT NULL,
+				slug varchar(50) NOT NULL,
+				status varchar(20) NOT NULL,
+				version varchar(20) NOT NULL,
 				updated_at datetime DEFAULT CURRENT_TIMESTAMP NOT NULL,
 				PRIMARY KEY (id),
 				UNIQUE KEY user_id_slug (user_id, slug)
