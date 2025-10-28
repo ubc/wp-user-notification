@@ -26,8 +26,8 @@ class TextInput_Control extends Question_Control {
 	 * @param string $label The label of the text input control.
 	 * @param array  $args The arguments of the text input control.
 	 */
-	public function __construct( $name, $label, $args = array() ) {
-		parent::__construct( $name, $label, $args );
+	public function __construct( $name, $label, $value = '', $args = array() ) {
+		parent::__construct( $name, $label, $value, $args );
 		$this->css_classes = array( 'inline' );
 
 		if ( isset( $args['type'] ) ) {

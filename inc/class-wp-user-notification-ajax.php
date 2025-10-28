@@ -107,7 +107,7 @@ class WP_User_Notification_Ajax {
 	 * @param string $sanitize_callback The sanitize callback.
 	 * @return array The sanitized array.
 	 */
-	private function sanitize_nested_array( $input_data, $sanitize_callback = 'sanitize_text_field' ) {
+	private function sanitize_nested_array( $input_data, $sanitize_callback = 'esc_textarea' ) {
 		foreach ( $input_data as $key => &$value ) {
 			if ( is_array( $value ) ) {
 				$value = $this->sanitize_nested_array( $value, $sanitize_callback );

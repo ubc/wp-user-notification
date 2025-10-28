@@ -148,7 +148,6 @@ class WP_User_Notification_Registry {
 				'id'              => array(),
 				'role'            => array(),
 				'aria-labelledby' => array(),
-				'aria-modal'      => array(),
 			),
 			'h1'       => array(
 				'id'    => array(),
@@ -231,8 +230,8 @@ class WP_User_Notification_Registry {
 					$notification_count = count( $active_notifications );
 					for ( $i = 0; $i < $notification_count; $i++ ) :
 						?>
-					<div role="dialog" id="dialog-<?php echo esc_attr( $active_notifications[ $i ]->get_slug() ); ?>" aria-labelledby="dialog_<?php echo esc_attr( $active_notifications[ $i ]->get_slug() ); ?>_label" aria-modal="true" class="hidden">
-						<h1 id="dialog_<?php echo esc_attr( $active_notifications[ $i ]->get_slug() ); ?>_label" class="dialog_label"><?php echo esc_html( $active_notifications[ $i ]->get_label() ); ?></h1>
+					<dialog id="dialog-<?php echo esc_attr( $active_notifications[ $i ]->get_slug() ); ?>" aria-labelledby="dialog_<?php echo esc_attr( $active_notifications[ $i ]->get_slug() ); ?>_label">
+						<h2 id="dialog_<?php echo esc_attr( $active_notifications[ $i ]->get_slug() ); ?>_label" class="dialog_label" autofocus tabindex="-1"><?php echo esc_html( $active_notifications[ $i ]->get_label() ); ?></h2>
 						<?php echo wp_kses_post( $active_notifications[ $i ]->get_output() ); ?>
 
 						<form class="dialog_form" next="<?php echo isset( $active_notifications[ $i + 1 ] ) ? esc_attr( $active_notifications[ $i + 1 ]->get_slug() ) : ''; ?>">
@@ -273,23 +272,23 @@ class WP_User_Notification_Registry {
 								<button type="submit" class="button button-secondary" name="action" value="remind_me_later" formnovalidate><?php esc_html_e( 'Remind me later', 'wp-user-notification' ); ?></button>
 							</div>
 						</form>
-					</div>
+					</dialog>
 				<?php endfor; ?>
 				</div>
 
+				<?php if ( count( $active_notifications ) > 0 ) : ?>
 				<script>
 					jQuery(document).ready(function($) {
-						// Use document.body as focusAfterClosed fallback
-						openDialog( 'dialog-<?php echo esc_attr( $active_notifications[0]->get_slug() ); ?>', document.body, null );
+						document.getElementById( 'dialog-<?php echo esc_attr( $active_notifications[0]->get_slug() ); ?>' ).showModal();
 					});
 				</script>
-				<?php
+					<?php
+				endif;
 
 				wp_enqueue_script( 'wp-user-notification-dialog', WP_USER_NOTIFICATION_URL . 'assets/dialog.js', array(), filemtime( WP_USER_NOTIFICATION_DIR . 'assets/dialog.js' ), true );
-				wp_enqueue_script( 'wp-user-notification-dialog-action', WP_USER_NOTIFICATION_URL . 'assets/dialog-action.js', array(), filemtime( WP_USER_NOTIFICATION_DIR . 'assets/dialog-action.js' ), true );
 				wp_enqueue_style( 'wp-user-notification-dialog', WP_USER_NOTIFICATION_URL . 'assets/dialog.css', array(), filemtime( WP_USER_NOTIFICATION_DIR . 'assets/dialog.css' ) );
 
-				wp_localize_script( 'wp-user-notification-dialog-action', 'wp_user_notification', array( 'wp_user_notification_nonce' => wp_create_nonce( 'wp_user_notification_nonce' ) ) );
+				wp_localize_script( 'wp-user-notification-dialog', 'wp_user_notification', array( 'wp_user_notification_nonce' => wp_create_nonce( 'wp_user_notification_nonce' ) ) );
 			}
 		);
 	}
