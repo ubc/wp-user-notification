@@ -32,7 +32,7 @@ class WP_User_Notification_DB {
 	 *
 	 * @var string
 	 */
-	private static $table_version = '1.0.0';
+	private static $table_version = '1.0.1';
 
 	/**
 	 * The key of the option that stores the database table version.
@@ -79,7 +79,7 @@ class WP_User_Notification_DB {
 		$sql = "CREATE TABLE $table_name (
                 id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
 				notification_id bigint(20) unsigned NOT NULL,
-                question_slug varchar(255) NOT NULL,
+                question_slug varchar(50) NOT NULL,
                 answer varchar(255),
                 PRIMARY KEY (id),
                 UNIQUE KEY unique_notification_question (notification_id, question_slug)
